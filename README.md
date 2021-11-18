@@ -1,1 +1,1 @@
-This is a project
+This is a project to help students use the internet.
