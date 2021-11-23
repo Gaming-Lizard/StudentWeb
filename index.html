@@ -1,29 +1,103 @@
 <!DOCTYPE html>
 <html>
 <body>
+<script id="sample" type="text/plain">
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
 <script>
-var NepPlayer = "#emul";
 
-var NepEmu = "nes";
 
-var NepLang = "en";
 
-var gameUrl ="Super Mario Bros (E).nes';
+var NepPlayer = "#emu";     // ID of html element where the emulator will be inserted
 
-var NjsScript=document.createElement( 'script' );
+var NepEmu = "gba";         // Platform select
 
-NjsScript.src="//mem.neptunjs.com/njs/njsLoader.js";
+var NepZoom = "enable";     // Add extra button on toolbar to scale up emulator. Disabled by default
 
-document.body.appendChild(NjsScript)
+var NepMaxWidth = "1100px"; // Maximum width size of emulator. 870px by default
+
+var NepLang = "en";	        // Interface language of the emulator. EN by default
+
+var EmuGbaBios = "enable";	// ( only for GBA ) GBA Bios Need for some games. Disabled by default
+
+var gameUrl = "//neptunjs.xyz/roms/gba/1986 - Pokemon - Emerald Version (UE).zip"; // Game Url
+
+<script>
+
+<script src="https://mem.neptunjs.com/njs/njsLoader.js" type="text/javascript"> //NeptunJS lib
 
 </script>
- 
-<script src="https://mem.neptunjs.com/njs/njsLoader.js" type="text/javascript"> //NeptunJS lib
-  </script>
+<script type="text/javascript">
+var themes = [
+		['#fff', 'Default'],
+		//['#000', 'Django'],
+	//'#fff', 'Eclipse'],
+		//['#000', 'Emacs'],
+		//['#000', 'FadeToGrey'],
+		//['#000', 'MDUltra'],
+		//['#000', 'Midnight'],
+		//['#000', 'RDark']
+	];
+	
+$(document).ready(function()
+{
+	var sample = $('#sample').text().replace(/</g, '&lt;');
+	
+	$.each(themes, function(index)
+	{
+		var $iframe = $('<iframe class="test-wrap" src="about:blank" style="height:480px"/>'),
+			background = this[0],
+			themeName = this[1]
+			;
+		
+		$('#output')
+			.append(''
 
+			)
+			.append($iframe)
+			;
+			
+		$iframe.ready(function()
+		{
+			var doc = $iframe[0].contentDocument;
+			$iframe.css('background', background);
+			
+			doc.write(''
+				+ '<scr' + 'ipt type="text/javascript" src="/neptun/js/scripts/XRegExp.js"></scr' + 'ipt>'
+				+ '<scr' + 'ipt type="text/javascript" src="/neptun/js/scripts/shCore.js"></scr' + 'ipt>'
+				+ '<scr' + 'ipt type="text/javascript" src="/neptun/js/scripts/shBrushXml.js"></scr' + 'ipt>'
+				+ '<scr' + 'ipt type="text/javascript" src="/neptun/js/scripts/shBrushJScript.js"></scr' + 'ipt>'
+				+ '<link type="text/css" rel="stylesheet" href="/neptun/styles/shCore' + themeName + '.css"/>'
+				+ '<pre type="syntaxhighlighter" class="brush: js; html-script: true; highlight: [5, 20]" title="This is SyntaxHighlighter theme ' + themeName + ' in action!">'
+					+ sample
+				+ '</pre>'
+				+ '<pre type="syntaxhighlighter" class="brush: js; html-script: true; collapse: true">'
+					+ sample
+				+ '</pre>'
+				+ '<scr' + 'ipt type="text/javascript">'
+					+ 'SyntaxHighlighter.highlight();'
+				+ '</scr' + 'ipt>'
+				);
+			doc.close();
+		});
+	});
+	
+});
+</script>
+<script>
+var NepZoom ='enable';
+var NepMaxWidth = '1100px';
+var boxartimg = "";	
+var NepLang = "en";	
+var NepPlayer = "#emu";
+var NepEmu = "gba";
+var EmuGbaBios = "enable";	
+var gameUrl = "//neptunjs.xyz/roms/gba/1986 - Pokemon - Emerald Version (UE).zip";
+</script>
 
-</body>
+<script src="//mem.neptunjs.com/njs/njsLoader.js" type="text/javascript"></script>
+<footer>
+<div id="footer-con-wrapper">
+</div>
+  </footer>
+  </body>
 </html>
